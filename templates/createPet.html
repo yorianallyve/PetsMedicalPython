@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<div class="card card-body" >
+    <form action="/create" method="POST">
+        <legend>INSERT</legend>
+        <div class="form-group">
+            <input type="text" class="form-control" name="petName" placeholder="Pet Name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="age" placeholder="Age">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="race" placeholder="Race">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="specie" placeholder="Specie">
+        </div>
+        <br />
+        <button class="btn btn-primary btn-block me-md-2">
+            Save
+        </button>
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

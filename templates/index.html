@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!-- <div class="row">
+  <div class="col-md-5">
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" text-align="center">
+      {{ message }}
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %} -->
+
+
+
+{% block content %}
+  <h1>Welcome</h1>
+
+  <img src="{{ url_for('static', filename='images/pet-insurance.jpg') }}"
+                     style="max-width: 500px"
+                     alt="pet insurance">
+  
+{% endblock %}
+
+{% endblock %}
