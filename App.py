@@ -133,7 +133,7 @@ def get_vacine(id):
 def update_vacine(id):
   if request.method == 'POST':
         vacineName = request.form['vacineName']
-        observations = request.form['observations']        
+        observations = request.form['observations']
         cur = mysql.connection.cursor()
         cur.execute("""
             UPDATE Vacine

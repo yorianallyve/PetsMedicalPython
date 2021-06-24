@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
 
+<div class="row">
+    <div class="card card-body">
+        <form action="/updateVacine/{{vacine.0}}" method="POST">
+            <legend>EDIT VACINE ID - {{vacine.0}}</legend>
 
-<div class="card card-body">
-    <form action="/updateVacine/{{vacine.0}}" method="POST">
-        <legend>EDIT VACINE ID - {{vacine.0}}</legend>
-
-        <!-- <div class="form-group">
+            <!-- <div class="form-group">
             <fieldset>
                 <input type="text" class="form-control" name="vacineName" value="{{vacine.1}}">
             </fieldset>
@@ -15,34 +15,32 @@
         <div class="form-group">
             <input type="text" name="observations" value="{{vacine.2}}" class="form-control">
         </div> -->
-        
-        <div class="form-group">
-            <label class="col-form-label mt-4" for="inputDefault">Vacine Name</label>
-            <input type="text" class="form-control" name="vacineName" value="{{vacine.1}}">
-        </div>
 
-        <div class="form-group">
-            <label class="col-form-label mt-4" for="inputDefault">Observations</label>
-            <input type="text" class="form-control" name="observations" value="{{vacine.2}}" size="20">
-        </div>
+            <div class="form-group">
+                <label class="col-form-label mt-4" for="inputDefault">Vacine Name</label>
+                <input type="text" class="form-control" name="vacineName" value="{{vacine.1}}">
+            </div>
 
-        
-        <div class="form-group">
-            <label for="exampleTextarea" class="form-label mt-4">Observations</label>
-            <textarea class="form-control" value="{{vacine.1}}" rows="3" spellcheck="true"></textarea>
-          </div>
+            <!-- <div class="form-group">
+                <label class="col-form-label mt-4" for="inputDefault">Observations</label>
+                <input type="text" class="form-control" name="observations" value="{{vacine.2}}" size="20">
+            </div> -->
 
-          
 
-        <br />
+            <div class="form-group">
+                <label for="exampleTextarea" class="form-label mt-4">Observations</label>
+                <textarea class="form-control" rows="3" name="observations" spellcheck="true">{{vacine.2}}</textarea>
+            </div>
 
-        <button class="btn btn-primary btn-block me-md-2">
-            Update Vacine
-        </button>
-    </form>
+
+            <br />
+
+            <button class="btn btn-primary btn-block me-md-2">
+                Update Vacine
+            </button>
+        </form>
+    </div>
 </div>
-</div>
-</div>
-</div>
+
 
 {% endblock %}
