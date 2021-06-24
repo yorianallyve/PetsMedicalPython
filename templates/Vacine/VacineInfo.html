@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="row">
+  <div class="col-md-5">
+    {% with messages = get_flashed_messages()  %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" text-align="center">
+      {{ message }}
+      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+{% block content %}
+  <h1>Vacine</h1>
+  <a href="/createVacine" class="btn btn-primary btn-sm" >Create Vacine</a>
+  <br/>
+<br/>
+  <div class="col-md-12">
+    <table class="table table-dark table-sm">
+      <thead>
+        <tr class="reservation__fontcolor">
+          <th>Id Vacine</th>
+          <th>Vacine Name</th>
+          <th>Observations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for vacinelts in vacines %}
+        <tr>
+          <td>{{vacinelts.0}}</td>
+          <td>{{vacinelts.1}}</td>
+          <td>{{vacinelts.2}}</td>
+
+          <td>
+            <a href="/editVacine/{{vacinelts.0}}" class="btn btn-info btn-sm" >Edit</a>
+            <a href="/deleteVacine/{{vacinelts.0}}" class="btn btn-danger btn-delete btn-sm">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+{% endblock %}
+
+{% endblock %}

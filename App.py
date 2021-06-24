@@ -19,9 +19,9 @@ app.secret_key = "mysecretkey"
 def index():
     return render_template('index.html')
 
-@app.route('/')
-def pet():
-    return render_template('petInfo.html')
+# @app.route('/')
+# def pet():
+#     return render_template('petInfo.html')
 
 
 @app.route('/petInfo')
@@ -91,6 +91,69 @@ def createPet():
         mysql.connection.commit()
         flash('Pet added successfully')
         return redirect(url_for('petInfo'))
+    
+    
+    
+@app.route('/vacineInfo')
+def vacineInfo():
+    cur=mysql.connection.cursor()
+    cur.execute('SELECT * from Vacine')
+    data=cur.fetchall()
+    print(data)    
+    return render_template('Vacine/vacineInfo.html',vacines=data)
+
+
+@app.route('/createVacine')
+def create_viewVacine():   
+    return render_template('Vacine/createVacine.html')
+
+@app.route('/createVacine', methods=['POST'])
+def createVacine():
+    if request.method == 'POST':
+        vacineName = request.form['vacineName']
+        observations = request.form['observations']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO Vacine (vacineName, observations) VALUES (%s,%s)",
+        (vacineName, observations))
+        mysql.connection.commit()
+        flash('Pet added successfully')
+        return redirect(url_for('vacineInfo'))
+    
+
+@app.route('/editVacine/<id>')
+def get_vacine(id):
+    cur=mysql.connection.cursor()
+    cur.execute('SELECT * from Vacine where idVacine = {0}'.format(id))
+    data = cur.fetchall()  
+    return render_template('Vacine/editVacine.html', vacine=data[0])
+
+
+
+@app.route('/updateVacine/<id>', methods=['POST'])
+def update_vacine(id):
+  if request.method == 'POST':
+        vacineName = request.form['vacineName']
+        observations = request.form['observations']        
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE Vacine
+            SET vacineName = %s,
+                observations = %s
+            WHERE idVacine = %s
+        """, (vacineName, observations,id))
+        flash('Vacine updated successfully')
+        mysql.connection.commit()
+        return redirect(url_for('vacineInfo'))
+    
+    
+@app.route('/deleteVacine/<id>')
+def delete_vacine(id):
+    cur=mysql.connection.cursor()
+    cur.execute('DELETE FROM Vacine WHERE idVacine= {0}'.format(id))
+    mysql.connection.commit()
+    flash('Vacine removed successfully')
+    return redirect(url_for('vacineInfo'))
+
 
 if __name__ == '__main__':
     app.run(port=3001, debug=True)

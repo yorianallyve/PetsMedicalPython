@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<div class="card card-body" >
+    <form action="/createVacine" method="POST">
+        <legend>INSERT VACINE</legend>
+        <!-- <div class="form-group">
+            <input type="text" class="form-control" name="vacineName" placeholder="Vacine Name">
+        </div>
+        
+        <div class="form-group">
+            <textarea type="text" class="form-control" name="observations" placeholder="Observations"></textarea>
+        </div> -->
+        
+        <div class="form-group">
+            <label class="col-form-label mt-4" for="inputDefault">Vacine Name</label>
+            <input type="text" class="form-control" name="vacineName" placeholder="Vacine Name">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4">Observations</label>
+            <textarea type="text" class="form-control" name="observations" placeholder="Observations"></textarea>
+          </div>
+
+
+        <br />
+        
+        <button class="btn btn-primary btn-block me-md-2">
+            Save Vacine
+        </button>
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
